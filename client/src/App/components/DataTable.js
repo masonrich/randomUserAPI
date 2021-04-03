@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import MaterialTable from "material-table";
 import { Link } from "react-router-dom";
 
-const DataTable = ({ data }) => {
+const DataTable = ({ data, page, setPage }) => {
   //state variable to highlight selected row
   const [selectedRow, setSelectedRow] = useState(null);
 
@@ -66,7 +66,11 @@ const DataTable = ({ data }) => {
             backgroundColor:
               selectedRow === rowData.tableData.id ? "#d9f7f7" : "#FFF",
           }),
+          initialPage: page,
+          pageSizeOptions: [10],
+          pageSize: 10,
         }}
+        onChangePage={(p) => setPage(p)}
       />
     </div>
   );

@@ -9,6 +9,7 @@ import { getUserList } from "./api/users";
 const App = () => {
   const [usersList, setUsersList] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [page, setPage] = useState(0);
 
   //on mount function to call API and retrieve data from backend
   useEffect(() => {
@@ -33,7 +34,9 @@ const App = () => {
           <Route
             exact
             path="/"
-            component={() => <Main usersList={usersList} />}
+            component={() => (
+              <Main usersList={usersList} page={page} setPage={setPage} />
+            )}
           />
           <Route path="/details" component={Details} />
         </Switch>
